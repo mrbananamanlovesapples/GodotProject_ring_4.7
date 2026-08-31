@@ -13,3 +13,4 @@ func _physics_process(delta: float) -> void:
 		global_position.x -= 1
 	elif Input.is_action_pressed("d"):
 		global_position.x += 1
+	#Current player movement for test purposes only-----------------

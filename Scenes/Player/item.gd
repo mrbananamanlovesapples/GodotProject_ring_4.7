@@ -15,7 +15,7 @@ func Animations():
 	var speed := 2.0   # higher = faster bobbing
 	get_child(0).position.y = sin(t * speed) * amplitude
 
-	# --- Clamp and flip direction ---
+	#Clamp and flip direction--------------------
 	if child.position.y >= param:
 		child.position.y = param
 		MoveAmount = -abs(MoveAmount)
@@ -23,5 +23,5 @@ func Animations():
 	elif child.position.y <= -param:
 		child.position.y = -param
 		MoveAmount = abs(MoveAmount)
-	# --- Apply movement ---
+	#Apply movement-------------
 	child.position.y += MoveAmount
