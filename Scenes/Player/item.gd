@@ -13,7 +13,7 @@ func Animations():
 	var t : float = (Time.get_ticks_msec() + Offset) / 1000.0
 	var amplitude : float = param 
 	var speed := 2.0   # higher = faster bobbing
-	get_child(0).position.y = sin(t * speed) * amplitude
+	child.position.y = sin(t * speed) * amplitude
 
 	#Clamp and flip direction--------------------
 	if child.position.y >= param:

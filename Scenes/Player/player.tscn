@@ -1,21 +1,37 @@
 [gd_scene format=3 uid="uid://djbj2r8km5x85"]
 
 [ext_resource type="Script" uid="uid://dyvnj60pakxnw" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
+[ext_resource type="Texture2D" uid="uid://dqgli476llsty" path="res://Assets/Floatingstickman.png" id="2_a3d8c"]
+[ext_resource type="PackedScene" uid="uid://duec82wc3cjg5" path="res://Scenes/PlayerCam/player_camera.tscn" id="3_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://dnrj7f7orxa7m" path="res://Assets/Clouds1.png" id="4_mtuoh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl5ds"]
-radius = 8.0
+radius = 31.0
+height = 112.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rl5ds"]
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.22670749, 0.22670752, 0.22670731, 1)
-corner_radius_top_left = 11
-corner_radius_top_right = 11
-corner_radius_bottom_right = 11
-corner_radius_bottom_left = 11
-corner_detail = 11
+[sub_resource type="Curve" id="Curve_dd0ac"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jhyir"]
+_data = [Vector2(0.2393617, 1), 0.0, 0.0, 0, 0, Vector2(0.81914896, 0.39325845), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_74mp2"]
+_data = [Vector2(0.17021278, 0.97752815), 0.0, 0.0, 0, 0, Vector2(1, 0.022471905), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_oikmp"]
+offsets = PackedFloat32Array(0, 0.72839504, 0.9876543)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Curve" id="Curve_0u5uq"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jlvik"]
 
 [node name="Player" type="CharacterBody2D" unique_id=218810755]
 script = ExtResource("1_uvnfx")
@@ -25,12 +41,45 @@ script = ExtResource("1_uvnfx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1547254182]
 shape = SubResource("CapsuleShape2D_rl5ds")
 
-[node name="Player" type="Panel" parent="." unique_id=234406934]
-offset_left = -9.0
-offset_top = -15.0
-offset_right = 8.0
-offset_bottom = 15.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_rl5ds")
+[node name="Floatingstickman" type="Sprite2D" parent="." unique_id=1882193008]
+position = Vector2(-1, -6)
+texture = ExtResource("2_a3d8c")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=760109278]
-zoom = Vector2(2.765, 2.765)
+[node name="PlayerCamera" parent="." unique_id=1855771968 instance=ExtResource("3_xpcdj")]
+position = Vector2(-57, -10)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = false
+drag_vertical_enabled = false
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
+
+[node name="Particles" type="Node2D" parent="." unique_id=576174090]
+
+[node name="CloudParticles" type="CPUParticles2D" parent="Particles" unique_id=2142417245]
+z_index = -12
+position = Vector2(0, 38)
+amount = 16
+texture = ExtResource("4_mtuoh")
+lifetime = 2.1399999999999997
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(13.035, 7.035)
+spread = 180.0
+gravity = Vector2(0, -30)
+initial_velocity_max = 10.0
+angular_velocity_min = -114.05
+angular_velocity_max = 128.32
+angle_min = -256.6
+angle_max = 171.0
+angle_curve = SubResource("Curve_dd0ac")
+scale_amount_min = 0.4
+split_scale = true
+scale_curve_x = SubResource("Curve_jhyir")
+scale_curve_y = SubResource("Curve_74mp2")
+color_ramp = SubResource("Gradient_oikmp")
+anim_speed_max = 24.08
+anim_speed_curve = SubResource("Curve_0u5uq")
+anim_offset_curve = SubResource("Curve_jlvik")

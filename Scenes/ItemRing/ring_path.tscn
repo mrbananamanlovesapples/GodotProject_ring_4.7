@@ -9,6 +9,6 @@ _data = {
 point_count = 25
 
 [node name="RingPath" type="Path2D" unique_id=1621527189]
-scale = Vector2(1, 0.6)
+scale = Vector2(5, 3)
 curve = SubResource("Curve2D_j6rkf")
 script = ExtResource("1_yt2fa")

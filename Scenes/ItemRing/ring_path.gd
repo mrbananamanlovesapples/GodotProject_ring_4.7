@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	rotatering()
 	FollowPlayer()
 func FollowPlayer():
-	var Fspeed = .2
+	var Fspeed = .07
 	global_position.x += (GV.PlayerPos.x - global_position.x) * Fspeed
 	global_position.y += (GV.PlayerPos.y - global_position.y) * Fspeed #Ring follows player with a delay/lag 
 func resetitemsinring():
