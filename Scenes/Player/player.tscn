@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://djbj2r8km5x85"]
+
+[ext_resource type="Script" uid="uid://dyvnj60pakxnw" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rl5ds"]
+radius = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rl5ds"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22670749, 0.22670752, 0.22670731, 1)
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
+corner_detail = 11
+
+[node name="Player" type="CharacterBody2D" unique_id=218810755]
+script = ExtResource("1_uvnfx")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1942040465]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1547254182]
+shape = SubResource("CapsuleShape2D_rl5ds")
+
+[node name="Player" type="Panel" parent="." unique_id=234406934]
+offset_left = -9.0
+offset_top = -15.0
+offset_right = 8.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rl5ds")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=760109278]
+zoom = Vector2(2.765, 2.765)
